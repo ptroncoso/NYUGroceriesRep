@@ -1,4 +1,6 @@
 import code
+import operator
+
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -24,3 +26,10 @@ products = [
 print(products)
 print("________")
 print("THERE ARE " + str(len(products)) + " PRODUCTS:")
+
+products= sorted(products, key=operator.itemgetter("name"))
+
+for product in products:
+    price_usd = ' (${0:.2f})'.format(product["price"])
+    print(" + " + product["name"] + price_usd)
+    
