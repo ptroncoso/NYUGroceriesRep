@@ -22,3 +22,5 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
     ]
 print(products)
+print("________")
+print("THERE ARE " + str(len(products)) + " PRODUCTS:")
