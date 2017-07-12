@@ -1,6 +1,8 @@
 import code
 import operator
 
+# products
+
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -23,13 +25,33 @@ products = [
     {"id":19, "name": "Gluten Free Quinoa Three Cheese & Mushroom Blend", "department": "dry goods pasta", "aisle": "grains rice dried goods", "price": 3.99},
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
     ]
-print(products)
-print("________")
-print("THERE ARE " + str(len(products)) + " PRODUCTS:")
+#print(products)
+#print("________")
+#print("THERE ARE " + str(len(products)) + " PRODUCTS:")
 
 products= sorted(products, key=operator.itemgetter("name"))
 
+#for product in products:
+#    price_usd = ' (${0:.2f})'.format(product["price"])
+#    print(" + " + product["name"] + price_usd)
+
+
+    # Departments
+
+departments = []
 for product in products:
-    price_usd = ' (${0:.2f})'.format(product["price"])
-    print(" + " + product["name"] + price_usd)
-    
+    departments.append(product["department"])
+departments = set(departments) #removing duplicates
+departments = list(departments)
+departments = sorted(departments)
+
+print("------------------")
+print("THERE ARE " + str(len(departments)) + " DEPARTMENTS:")
+
+def get_products(department_name):
+    return [product for product in products if product["department"] == department_name]
+
+for department in departments:
+    department_products = get_products(department)
+    product_count = len(department_products)
+    print(" + " + department.title() + " (" + str(product_count) + " products)")
